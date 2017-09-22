@@ -37,13 +37,13 @@ for i in range(num_episodes):
 
     # The Q-Table learning algorithm
     while not done:
-        action = rargmax(Q[state, :])
+        action = rargmax(Q[state, :])    # will be updated for solving exploitation & exploration problem
 
         # Get new state and reward from environment
         new_state, reward, done, _ = env.step(action)
 
         # Update Q-Table with new knowledge using learning rate
-        Q[state, action] = reward + np.max(Q[new_state, :])
+        Q[state, action] = reward + np.max(Q[new_state, :])   # will be updated for discounting furture rewards
 
         rAll += reward
         state = new_state
