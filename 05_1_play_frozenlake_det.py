@@ -18,7 +18,7 @@ arrow_keys = {
     '\x1b[D': LEFT
 }
 
-# Register FrozenLake with is_slippery False
+# Register FrozenLake(v3) with is_slippery False
 register(
     id = 'FrozenLake-v3',
     entry_point = 'gym.envs.toy_text:FrozenLakeEnv',
