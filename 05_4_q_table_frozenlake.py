@@ -9,7 +9,7 @@ env = gym.make('FrozenLake-v0')
 # Initialize table with all zeros
 action_space_n = 4
 state_space_n = 16
-Q = np.zeros([state_space_n, action_space_n])
+Q = np.zeros([state_space_n, action_space_n])  #
 
 # Set learning parameters
 learning_rate = .85
@@ -33,7 +33,8 @@ for i in range(num_episodes):
         new_state, reward, done, _ = env.step(action)
 
         # Update Q-Table with new knowledge using learning rate
-        Q[state, action] = (1 - learning_rate) * Q[state, action] + learning_rate * (reward + dis * np.max(Q[new_state, :]))
+        Q[state, action] = (1 - learning_rate) * Q[state, action] + learning_rate * (
+        reward + dis * np.max(Q[new_state, :]))
 
         rAll += reward
         state = new_state
@@ -43,5 +44,5 @@ for i in range(num_episodes):
 print("Score over time: " + str(sum(rList) / num_episodes))
 print("Final Q-Table Values")
 print(Q)
-plt.bar(range(len(rList)), rList, color = "blue")
+plt.bar(range(len(rList)), rList, color="blue")
 plt.show()
